@@ -14,7 +14,11 @@ app.use(passport.session());
 const routes = require('routes/passport.js');
 app.use(routes);
 
-
+app.use(require('express-session')({
+  secret: 'my-secret',
+  resave: false,
+  saveUninitialized: false,
+}))
 
 const User = require('./models/user');
 passport.use(new localStrategy(User.authenticate()));
