@@ -11,6 +11,10 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use(passport.session());
 
+const routes = require('routes/passport.js');
+app.use(routes);
+
+
 
 const User = require('./models/user');
 passport.use(new localStrategy(User.authenticate()));
